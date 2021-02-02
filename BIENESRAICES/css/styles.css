@@ -23,6 +23,7 @@ img{
     max-width: 100%; /*MUY IMPORTANTE PARA AJUSTAR LAS IMAGENES AL CONTENEDOR*/
 }
 .contenedor{
+    width: 95%;
     max-width: 110rem; /* para centrar los contenidos en los pixeles indicados*/
     margin: 0 auto; /* SERIA:0 auto 0 auto // 0 a las 12 - auto a las 15 - 0 a las 18 - auto a las 21 // margin-left: margin-right */
 
@@ -76,7 +77,16 @@ h4{
     display: inline-block; /*los enlaces y las imagenes son inline-block mientras que los textos o parrafos pueden ser solo block*/
     text-align: center;
     border: none;
+    display: block;
+    flex: 0 0 100%;
 
+}
+@media (min-width:768px ) {
+    .boton{
+        display: inline-block;
+        flex: 0 0 auto;
+    }
+    
 }
 .boton:hover{
     cursor: pointer; /*hover y cursor es para que cuando acerquemos el mouse al boton cambie la forma del cursor*/
@@ -112,6 +122,13 @@ h4{
     flex-direction: column;
     justify-content: space-between; /*Podemos usar flex-end o flex-start(default) o center y lo coloca a todo el contenido abajo o en el centro o por default // distribuidos se usa space*/
     /*space-between coloca uno arriba y otro abajo (hablando de los hijos principales)*/
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .contenido-header{
+        text-align: left;
+    }
+    
 }
 
 .contenido-header h1{
@@ -122,67 +139,113 @@ h4{
     line-height: 1.8; /*separa o agrega el interlineado*/
     font-size: 3.0rem;
 }
-
 .barra {
-    display: flex;
-    justify-content: space-between; /*Permite alinear contenido horizontalmante*/
-    align-items: center;/*Permite alinear contenido verticalmente*/
     padding-top: 1rem;
 }
+@media (min-width: 768px) {
+    .barra {
+        display: flex;
+        justify-content: space-between; /*Permite alinear contenido horizontalmante*/
+        align-items: center;/*Permite alinear contenido verticalmente*/
+    } 
+}
+
 
 /* Navegacion */
 .navegacion a {
     color: #ffffff;
     text-decoration: none;
     font-size: 1.8rem ; /*es igual a 18px*/
-    margin-right: 1.5rem;
+   font-size: 2rem;
+    display: block;
 }
-
+@media (min-width: 768px) {
+    .navegacion a{
+        display: inline-block;
+        margin-right: 1.5rem;
+        font-size: 1.6rem;
+    }
+    .navegacion a:last-of-type{
+        margin: 0;
+    }
+    
+}
 .navegacion a:hover{
     color: #71B100;
 }
-.navegacion a:last-of-type{
-    margin: 0;
+/* Mobile Menu */
+.mobile-menu img{
+    width: 4.7rem;
 }
+@media (min-width: 768px) {
+    .mobile-menu{
+    display: none;
+    }
+}
+.navegacion:target{
+    display: block;
+}
+.navegacion{
+    display: none;
+}
+@media (min-width: 768px) {
+    .navegacion{
+        display: block;
+    }
+}
+
 
 /* Iconos nosotros */
+@media (min-width: 768px) {
+    .iconos-nosotros{
+        display: flex;
+        justify-content: space-between; /*separa los 3 cuadros para que no queden juntos y tengan una mejor vista*/  
+    }
 
-.iconos-nosotros{
-    display: flex;
-    justify-content: space-between; /*separa los 3 cuadros para que no queden juntos y tengan una mejor vista*/  
+    
 }
+
 .icono{
-    flex-basis: calc(33.3% - 0.8rem); /*es para darle un ancho a todos los elementos, antes de usaba width*/
     text-align: center; /*podemos usar right left o justify pero queda mejor centrado (center)*/
+}
+@media (min-width: 768px) {
+    .icono{
+        flex-basis: calc(33.3% - 0.8rem); /*es para darle un ancho a todos los elementos, antes de usaba width*/
+   }
 }
 .icono h3{
     text-transform: uppercase; /*convierte en MAYUSCULAS - capitalize (convierte la primera letra a mayus) - lowercase (para hacerlo minus)*/
 }
 
 /* Anuncios */
-.contenedor-anuncios{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* para que despues de las 3 columnas se pasen abajo, se pone en el padre el de abajo es el hijo*/
+@media (min-width: 768px ) {
+    .contenedor-anuncios{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap; /* para que despues de las 3 columnas se pasen abajo, se pone en el padre el de abajo es el hijo*/
+    }
 }
 
+
 .anuncio{
-
-    /*flex-grow: 0; el contenido puede agrandarse si es posible*/
-    /*flex-shrink: 0;  permite que el contenido se encoja O NO , si ponemos 0 no se encoje, y siempre toma el tamñano de la base se usa para que el contenido pueda achicarse si es posible*/
-    /*flex-basis: calc(33.3% - 0.8rem); es la base el tamañp de la caja*/
-
-    flex: 0 0 calc(33.3% - 0.8rem); /*a los tres de arriba los podemos poner como uno solo, en este orden: grow shrink basis*/
-    
     /*border-style: solid;  tipo de linea que tendra el recuadro, hay muchas opciones*/
     /*border-color: dimgray; color de linea del recuadro*/
     /*border-width: 2px; tamaño de las lineas del recuadro*/
 
     border: 2px solid rgb(134, 134, 134); /* se utiliza para acortar codigo con los 3 border en uno solo 1: tamaño 2:tipo 3:color*/
-    
     background: #e4e0e0 ;
     margin-bottom: 2rem;
    
+}
+@media (min-width: 768px) {
+    .anuncio{
+        /*flex-grow: 0; el contenido puede agrandarse si es posible*/
+        /*flex-shrink: 0;  permite que el contenido se encoja O NO , si ponemos 0 no se encoje, y siempre toma el tamñano de la base se usa para que el contenido pueda achicarse si es posible*/
+        /*flex-basis: calc(33.3% - 0.8rem); es la base el tamañp de la caja*/
+
+        flex: 0 0 calc(33.3% - 0.8rem); /*a los tres de arriba los podemos poner como uno solo, en este orden: grow shrink basis*/
+    }
+    
 }
 .contenido-anuncio{
     padding: 1.7rem;
@@ -228,10 +291,9 @@ h4{
     height: 36rem;
     display: flex;/*sirve para habilitar flexbox*/
     align-items: center;
-
 }
 .contenido-contacto{
-    flex: 1; /*es un factor de crecimiento. por ejemplo si hay un elemento y 1000px le asigna a ese elemnto los 1000 si hay 2 le asigna 500 a cada uno*/
+    flex: 0 0 95%; /*es un factor de crecimiento. por ejemplo si hay un elemento y 1000px le asigna a ese elemnto los 1000 si hay 2 le asigna 500 a cada uno*/
     color: #ffffff;
 }
 .contenido-contacto p{
@@ -239,38 +301,40 @@ h4{
 }
 
 /* Seccion Inferior */
-
-.seccion-inferior{
-    display: flex;
-    justify-content: space-between;
+@media (min-width: 768px) {
+    .seccion-inferior{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .seccion-inferior .blog{
+        flex-basis: 60%;
+    }
+    
+    .seccion-inferior .testimoniales{
+    
+        flex-basis: calc(40% - 1.8rem);
+    }
 }
-
-.seccion-inferior .blog{
-    flex-basis: 60%;
-}
-
-.seccion-inferior .testimoniales{
-
-    flex-basis: calc(40% - 1.8rem);
-}
-
 .entrada-blog{
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 1.8rem;
 }
-
+@media (min-width: 768px) {
+    .entrada-blog{
+        display: flex;
+        justify-content: space-between;
+    }   
+}
 .entrada-blog:last-of-type {
     margin-bottom: 0; /* Elimina el segundo margen del article, para que solo este la separacion entre los dos titulos pero despues del segundo no este separado*/
 }
-
-.entrada-blog .imagen{
-    flex-basis: 40%;
-}
-
-
-.entrada-blog .texto-entrada{
-    flex-basis: calc(60% - 2.8rem);
+@media (min-width: 768px) {
+    .entrada-blog .imagen{
+        flex-basis: 40%;
+    }
+    .entrada-blog .texto-entrada{
+        flex-basis: calc(60% - 2.8rem);
+    }
 }
 .texto-entrada a{
     color: black;
@@ -326,8 +390,22 @@ h4{
 }
 .contenedor-footer{
     padding: 3rem 0;
-    display: flex;
-    justify-content: space-between; /*coloca un elemento del lado izuqierdi y otro del derecho*/
+    text-align: center;
+}
+@media (min-width:768px) {
+    .contenedor-footer {
+        display: flex;
+        justify-content: space-between; /*coloca un elemento del lado izuqierdi y otro del derecho*/
+    }
+}
+.site-footer nav{
+    display: none; /*Hace que cuando usemos dispositivos mas chicos no aparezca el nav*/
+}
+@media (min-width: 768px) {
+    .site-footer nav{
+        display: block;
+    }
+    
 }
 .nav-footer a{
     color: #ffffff;
@@ -342,11 +420,15 @@ h4{
 
 /* INTERNAS */
 /* Nosotros */
-.contenido-nosotros{
-    display: grid; /*es como flex pero mas actual css grid*/
-    grid-template-columns: 50% 40%; /* toma dos columnas y le indicas el tamaño*/
-    grid-column-gap: 2rem; /* antes usabamos margin , ahora usamos esta propiedad que agrega separacion*/
+@media (min-width: 768px) {
+    .contenido-nosotros{
+        display: grid; /*es como flex pero mas actual css grid*/
+        grid-template-columns: 50% 40%; /* toma dos columnas y le indicas el tamaño*/
+        grid-column-gap: 2rem; /* antes usabamos margin , ahora usamos esta propiedad que agrega separacion*/
+    }
+    
 }
+
 
 .texto-nosotros blockquote{
     font-weight: 900;
